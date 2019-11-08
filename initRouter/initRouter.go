@@ -1,38 +1,23 @@
 package initRouter
 
 import (
-	"GinHello/handler"
-	"GinHello/middleware"
-	"GinHello/utils"
+	"GinHello/handler/article"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func SetupRouter() *gin.Engine {
-	//router := gin.Default()
-	router := gin.New()
-	// 添加自定义的 logger 中间件
-	router.Use(middleware.Logger(), gin.Recovery())
-	if mode := gin.Mode(); mode == gin.TestMode {
-		router.LoadHTMLGlob("./../templates/*")
-	} else {
-		router.LoadHTMLGlob("templates/*")
-	}
-	router.StaticFile("/favicon.ico", "./favicon.ico")
-	router.Static("/statics", "./statics/")
-	router.StaticFS("/avatar", http.Dir(utils.RootPath()+"avatar/"))
-	index := router.Group("/")
-	{
-		index.Any("", handler.Index)
-	}
+	router := gin.Default()
 
-	// 添加 user
-	userRouter := router.Group("/user")
+	articleRouter := router.Group("")
 	{
-		userRouter.POST("/register", handler.UserRegister)
-		userRouter.POST("/login", handler.UserLogin)
-		userRouter.GET("/profile/", middleware.Auth(), handler.UserProfile)
-		userRouter.POST("/update", middleware.Auth(), handler.UpdateUserProfile)
+		// 通过获取单篇文章
+		articleRouter.GET("/article/:id", article.GetOne)
+		// 获取所有文章
+		articleRouter.GET("/articles", article.GetAll)
+		// 添加一篇文章
+		articleRouter.POST("/article", article.Insert)
+		// 删除一篇文章
+		articleRouter.DELETE("/article/:id", article.DeleteOne)
 	}
 
 	return router
