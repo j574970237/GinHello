@@ -7,11 +7,10 @@ import (
 
 // @title Gin swagger
 // @version 1.0
-// @description Gin swagger 示例项目
+// @description Gin Swagger Learning
 
-// @contact.name youngxhu
-// @contact.url https://youngxhui.top
-// @contact.email youngxhui@gmail.com
+// @contact.name jack
+// @contact.email 574970237@qq.com
 
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
