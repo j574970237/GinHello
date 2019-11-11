@@ -6,14 +6,28 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-
-POST http://localhost:8080/article
+GET http://localhost:8080/login
 Content-Type: application/json
 
 {
-  "type": "go",
-  "content": "Hello Go"
+  "username": "123",
+  "password": "Hello Go"
 }
 
 
+###
+
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "123",
+  "password": "Hello Go"
+}
+
+###
+
+GET http://localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMjMiLCJleHAiOjE1NzM1Mzk2MTAsImp0aSI6Ilx1MDAwMCIsImlhdCI6MTU3MzQ1MzIxMCwiaXNzIjoiZ2luIGhlbGxvIiwibmJmIjoxNTczNDUzMjEwLCJzdWIiOiJsb2dpbiJ9.MC-951LPPRno1fpNJIi9YdGweQyUe-KsBhDR9n-xoWA
 ###
